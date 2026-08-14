@@ -1,9 +1,14 @@
 import { useAuth } from "@clerk/expo";
 import { Redirect , Stack } from "expo-router";
 import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { useColorScheme } from "nativewind";
 
 export default function Layout(){
     const {isSignedIn , isLoaded} = useAuth();
+    const {colorScheme} = useColorScheme();
+
+    const isDark = colorScheme === "dark";
+    const tabTintColor = isDark ? "hsl(142 70% 54%)" : "hsl(147 75% 33%)";
 
     if(!isLoaded){
         return null;
@@ -14,7 +19,7 @@ export default function Layout(){
     }
 
     return  (
-    <NativeTabs>
+    <NativeTabs tintColor={tabTintColor}>
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label>List</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf={{

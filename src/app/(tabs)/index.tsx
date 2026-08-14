@@ -1,16 +1,16 @@
 
 import { useClerk } from '@clerk/expo';
-import { PreventRemoveContext } from 'expo-router/build/react-navigation';
 import { View , Text, Pressable } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Home(){
     const {signOut} = useClerk();
     return (
-        <View>
+        <SafeAreaView>
         <Text className='text-white'> Hello fron the Home page </Text>
         <Pressable onPress={() => signOut()}>
         <Text className='text-white'>Sign out</Text>
         </Pressable>
-        </View>
+        </SafeAreaView>
     );
 }
