@@ -48,7 +48,7 @@ export const updateGroceryItemQuantity = async (id:string , quantity: number) =>
     return rows[0];
 };
 
-export const deteGroceryItem = async (id: string) => {
+export const deleteGroceryItem = async (id: string) => {
     await db.delete(groceryItems).where(eq(groceryItems.id , id));
 };
 
